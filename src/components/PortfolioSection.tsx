@@ -2,6 +2,14 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
+const chutkyePhotos = [
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/c059f9f5-3028-4f56-acc8-0790ce5842be.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/d726d9c8-b70e-4ecf-b1d9-6b59bd66ba3b.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/b2b7e886-11d3-4010-8483-54ec2eb1734e.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/29d9a893-2e58-455d-b8b3-f3240af73b19.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/f5d76c63-904b-4dbf-86b8-74c83c0bd2a7.jpg",
+]
+
 const corporatePhotos = [
   "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/2e385f86-b07f-47ad-807d-7294953dd8fb.jpg",
   "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/c74c6904-9540-44bf-a24f-12da7c1dbabe.jpg",
@@ -19,10 +27,10 @@ const beседkaPhotos = [
 
 const projects = [
   {
-    title: "Проводник",
+    title: "Чуткие",
     category: "Иммерсивный спектакль",
     emoji: "🌌",
-    photos: null,
+    photos: chutkyePhotos,
     description:
       "Чуткий, чувственный опыт: гости проживали вечер через все органы чувств. Легенда о Проводнике, который искал Избранных, чтобы спасти мир чувства. Каждый стал частью истории.",
     tags: ["Иммерсив", "Все органы чувств", "Спектакль"],

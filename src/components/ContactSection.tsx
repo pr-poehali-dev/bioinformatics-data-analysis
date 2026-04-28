@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, Clock, Send } from "lucide-react"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -17,7 +17,6 @@ export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("[v0] Form submitted:", formData)
-    // Handle form submission
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,10 +37,10 @@ export function ContactSection() {
             Контакты
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Давайте <span className="text-primary">создавать вместе</span>
+            Давайте <span className="text-primary">создадим историю вместе</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Готовы воплотить ваши цифровые амбиции? Свяжитесь с нами без обязательств и узнайте, чем мы можем помочь.
+            Расскажите нам об идее вашего события — и мы предложим, как сделать его театральным переживанием, которое запомнят все.
           </p>
         </div>
 
@@ -49,7 +48,7 @@ export function ContactSection() {
           <div className="lg:col-span-2">
             <Card className="border-none shadow-xl bg-background">
               <CardHeader>
-                <CardTitle className="text-2xl">Напишите нам</CardTitle>
+                <CardTitle className="text-2xl">Расскажите о вашем событии</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -100,14 +99,14 @@ export function ContactSection() {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium">
-                      Сообщение *
+                      Расскажите об идее *
                     </label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Расскажите о вашем проекте..."
+                      placeholder="Какое событие вы планируете? Примерное количество гостей, дата, пожелания по атмосфере..."
                       rows={6}
                       required
                       className="transition-all focus:scale-[1.02]"
@@ -155,14 +154,14 @@ export function ContactSection() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                    <MapPin className="h-5 w-5" />
+                    <Clock className="h-5 w-5" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Время работы</h3>
                     <p className="text-sm text-muted-foreground">
-                      Пн - Пт: 9:00 - 18:00
+                      Пн - Пт: 10:00 - 20:00
                       <br />
-                      Выходные: по договоренности
+                      Выходные: по договорённости
                     </p>
                   </div>
                 </div>

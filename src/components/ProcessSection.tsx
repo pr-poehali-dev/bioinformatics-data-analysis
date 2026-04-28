@@ -1,27 +1,29 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Lightbulb, PaletteIcon, Rocket, ArrowRight } from "lucide-react"
+import { Lightbulb, Rocket, ArrowRight } from "lucide-react"
+import Icon from "@/components/ui/icon"
 import { Fragment } from "react"
 
 const steps = [
   {
     icon: Lightbulb,
-    title: "Концепция и планирование",
+    title: "Идея и концепция",
     description:
-      "Вместе обсуждаем вашу идею, цели и видение сайта. Разрабатываем четкий план, соответствующий вашим пожеланиям, с правильной структурой и функциональностью.",
+      "Проводим встречу, чтобы понять вас, ваших гостей и желаемое настроение. На основе этого создаём уникальную театральную концепцию события — жанр, атмосферу, сценарий.",
     number: "01",
   },
   {
-    icon: PaletteIcon,
-    title: "Разработка и дизайн",
+    icon: null,
+    iconName: "Drama",
+    title: "Подготовка и репетиции",
     description:
-      "Наши разработчики и дизайнеры приступают к созданию сайта. Фокусируемся на стильном дизайне, удобном для пользователей и технически безупречном.",
+      "Пишем авторский сценарий, подбираем актёров, готовим декорации, костюмы, свет и звук. Проводим полноценные репетиции, чтобы каждая деталь была отточена до совершенства.",
     number: "02",
   },
   {
     icon: Rocket,
-    title: "Тестирование и запуск",
+    title: "Воплощение и шоу",
     description:
-      "Тщательно тестируем сайт для обеспечения оптимальной производительности. После вашего одобрения запускаем проект и остаемся на связи для поддержки.",
+      "В день события наша команда берёт на себя всё. Вы просто наслаждаетесь, пока мы создаём незабываемую атмосферу для вас и ваших гостей.",
     number: "03",
   },
 ]
@@ -37,10 +39,10 @@ export function ProcessSection() {
             Наш процесс
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-balance">
-            От <span className="text-primary">идеи</span> к <span className="text-primary">результату</span>
+            От <span className="text-primary">идеи</span> к <span className="text-primary">спектаклю</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            В три простых шага превращаем вашу идею в мощное онлайн-присутствие, приносящее результат.
+            В три шага превращаем ваш запрос в театральное событие, которое запомнят все присутствующие.
           </p>
         </div>
 
@@ -55,7 +57,11 @@ export function ProcessSection() {
                 </div>
                 <CardHeader>
                   <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 w-fit group-hover:scale-110 group-hover:rotate-6">
-                    <step.icon className="h-6 w-6" />
+                    {step.icon ? (
+                      <step.icon className="h-6 w-6" />
+                    ) : (
+                      <Icon name={step.iconName!} size={24} />
+                    )}
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">{step.title}</CardTitle>
                 </CardHeader>

@@ -11,10 +11,9 @@ const values = [
 ]
 
 const stats = [
-  { number: "100+", label: "Событий" },
-  { number: "80+", label: "Довольных клиентов" },
-  { number: "20+", label: "Актёров в труппе" },
-  { number: "5+", label: "Лет на рынке" },
+  { number: "4+", label: "Лет на рынке" },
+  { number: "200+", label: "Довольных гостей" },
+  { number: "15+", label: "Мероприятий" },
 ]
 
 export function AboutSection() {

@@ -131,11 +131,11 @@ export function HeroSection() {
         <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground animate-fade-in-up animate-delay-300">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: "0.5s" }} />
-            <span>80+ довольных клиентов</span>
+            <span>Единственные в Сургуте</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: "1s" }} />
-            <span>5+ лет на рынке</span>
+            <span>Событийный театр нового формата</span>
           </div>
         </div>
       </div>

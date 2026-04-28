@@ -1,0 +1,19 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Пустые поля — ошибка",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "", "message": ""},
+      "expectedStatus": 400,
+      "expectedBody": {"error": "Заполните обязательные поля"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

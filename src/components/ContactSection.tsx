@@ -13,10 +13,26 @@ export function ContactSection() {
     phone: "",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
+    setStatus("loading")
+    try {
+      const res = await fetch("https://functions.poehali.dev/f7a11123-acb3-4c67-8cea-de828e3c79ec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setStatus("success")
+        setFormData({ name: "", email: "", phone: "", message: "" })
+      } else {
+        setStatus("error")
+      }
+    } catch {
+      setStatus("error")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -112,9 +128,19 @@ export function ContactSection() {
                       className="transition-all focus:scale-[1.02]"
                     />
                   </div>
-                  <Button type="submit" size="lg" className="w-full sm:w-auto group">
+                  {status === "success" && (
+                    <div className="p-4 rounded-lg bg-primary/10 text-primary text-sm font-medium">
+                      Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+                    </div>
+                  )}
+                  {status === "error" && (
+                    <div className="p-4 rounded-lg bg-destructive/10 text-destructive text-sm font-medium">
+                      Что-то пошло не так. Попробуйте ещё раз или напишите нам напрямую.
+                    </div>
+                  )}
+                  <Button type="submit" size="lg" className="w-full sm:w-auto group" disabled={status === "loading"}>
                     <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    Отправить
+                    {status === "loading" ? "Отправляем..." : "Отправить"}
                   </Button>
                 </form>
               </CardContent>

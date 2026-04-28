@@ -1,10 +1,20 @@
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+
+const beседkaPhotos = [
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/ae4a90fe-28c2-4f05-9952-461319a20ba8.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/829a9b1a-019b-4003-a2a0-fa3f7d09b152.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/ed309b56-2f71-4b05-8c8c-458e5e3aeec9.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/b06eaf8c-6d83-418a-8e4b-c2070547fe76.jpg",
+]
 
 const projects = [
   {
     title: "Проводник",
     category: "Иммерсивный спектакль",
     emoji: "🌌",
+    photos: null,
     description:
       "Чуткий, чувственный опыт: гости проживали вечер через все органы чувств. Легенда о Проводнике, который искал Избранных, чтобы спасти мир чувства. Каждый стал частью истории.",
     tags: ["Иммерсив", "Все органы чувств", "Спектакль"],
@@ -13,6 +23,7 @@ const projects = [
     title: "Совет дома 2026",
     category: "Корпоративное новогоднее шоу",
     emoji: "🏠",
+    photos: null,
     description:
       "Ностальгичный, яркий праздничный ужин, где гости стали настоящими соседями, объединёнными одной миссией и теплотой воспоминаний. Атмосфера советского дома, живые персонажи и общий стол.",
     tags: ["Корпоратив", "Новый год", "Ностальгия"],
@@ -21,11 +32,56 @@ const projects = [
     title: "Летняя беседка",
     category: "Театрализованный юбилей",
     emoji: "🌿",
+    photos: beседkaPhotos,
     description:
       "Все гости оказались в летней беседке, где происходила магия истории именинницы. Камерный, уютный и яркий вечер — о жизни, любви и самом главном.",
     tags: ["Юбилей", "Камерный", "Уют"],
   },
 ]
+
+function PhotoGallery({ photos }: { photos: string[] }) {
+  const [current, setCurrent] = useState(0)
+
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrent((c) => (c - 1 + photos.length) % photos.length)
+  }
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setCurrent((c) => (c + 1) % photos.length)
+  }
+
+  return (
+    <div className="relative overflow-hidden aspect-video bg-black group/gallery">
+      <img
+        src={photos[current]}
+        alt=""
+        className="w-full h-full object-cover transition-opacity duration-500"
+      />
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full p-1.5 opacity-0 group-hover/gallery:opacity-100 transition-opacity"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full p-1.5 opacity-0 group-hover/gallery:opacity-100 transition-opacity"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {photos.map((_, i) => (
+          <button
+            key={i}
+            onClick={(e) => { e.stopPropagation(); setCurrent(i) }}
+            className={`w-1.5 h-1.5 rounded-full transition-all ${i === current ? "bg-white scale-125" : "bg-white/50"}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function PortfolioSection() {
   return (
@@ -44,9 +100,13 @@ export function PortfolioSection() {
               key={index}
               className="group overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative overflow-hidden aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                <span className="text-7xl">{project.emoji}</span>
-              </div>
+              {project.photos ? (
+                <PhotoGallery photos={project.photos} />
+              ) : (
+                <div className="relative overflow-hidden aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                  <span className="text-7xl">{project.emoji}</span>
+                </div>
+              )}
               <CardContent className="p-6">
                 <p className="text-sm text-primary font-semibold mb-2">{project.category}</p>
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>

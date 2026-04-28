@@ -2,6 +2,14 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
+const corporatePhotos = [
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/2e385f86-b07f-47ad-807d-7294953dd8fb.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/c74c6904-9540-44bf-a24f-12da7c1dbabe.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/ed4b14eb-49b6-421d-9aab-48b8b51ba01b.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/73b0efef-38a3-4537-b7ab-3865ec48513f.jpg",
+  "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/71fe91b3-fce8-4ec8-80bc-2aebe3e1dd38.jpg",
+]
+
 const beседkaPhotos = [
   "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/ae4a90fe-28c2-4f05-9952-461319a20ba8.jpg",
   "https://cdn.poehali.dev/projects/fca0aa65-00cb-4128-88fc-787ad09d2aa5/bucket/829a9b1a-019b-4003-a2a0-fa3f7d09b152.jpg",
@@ -23,7 +31,7 @@ const projects = [
     title: "Совет дома 2026",
     category: "Корпоративное новогоднее шоу",
     emoji: "🏠",
-    photos: null,
+    photos: corporatePhotos,
     description:
       "Ностальгичный, яркий праздничный ужин, где гости стали настоящими соседями, объединёнными одной миссией и теплотой воспоминаний. Атмосфера советского дома, живые персонажи и общий стол.",
     tags: ["Корпоратив", "Новый год", "Ностальгия"],
